@@ -13,6 +13,8 @@ let ticking = false;
 
 window.addEventListener("scroll",function(){
     let value = this.window.scrollY;
-    stars.style.transform = `translateX(${value * 0,40}px)`
+    stars.style.transform = `translateX(${value * 0.40}px)`;
     moon.style.transform = `translate(${value * 0.40}px, ${value * 0.40}px)`;
+    book.style.transform = `translate(-${value*0.005}px)`;
+    book_back.style.transform = `translateX(-${value* 0.1}px)`;
 })
