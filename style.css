@@ -5,9 +5,12 @@
 
 :root{
     --font-logo:'Kaushan Script', cursive;
-    --white:#fff;
+    --white:#407880;
     --purple:#2b1055;
     --blue:#7597de;
+    --bg-night:linear-gradient(#2b1055,#7597de);
+    --bg-day:linear-gradient(#acf5fb,#cdf9ff);
+    /* #acf5fb,#cdf9ff */
 }
 
 *{
@@ -20,9 +23,14 @@
     
 }
 body{
-    background: linear-gradient(#2b1055,#7597de);
+    transition: 2000ms;
+    background: var(--bg-day);
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: hidden;    
+}
+
+.bodyNight{
+    animation: bgcolor 2s linear;
 }
 
 header{
@@ -34,7 +42,7 @@ header{
     justify-content: space-between;
     align-items: center;
     display: flex;
-    z-index: 20000;
+    z-index: 10000;
 }
 
 header .logo{
@@ -80,7 +88,16 @@ section {
     align-items: center;
 }
 
-section::before{
+#stars{
+    display: none;
+    
+}
+
+#moon{
+    display: none;
+}
+
+/* section::before{
     content: '';
     position: absolute;
     bottom: 0;
@@ -88,7 +105,7 @@ section::before{
     height: 100px;
     background:linear-gradient(to top,var(--purple),transparent);
     z-index: 200000;
-}
+} */
 
 section img{
     position:absolute;
@@ -99,12 +116,79 @@ section img{
     object-fit: cover;
     pointer-events: none;
 }
-
-
-section img#moon{
-    mix-blend-mode: screen;
+/* .divSol{
     position: absolute;
-    left: 0;
+    left: 80px;
+} */
+
+.sol{
+    position: absolute;
+    max-width: 10%;
+    height: auto;
+    left: 85%;
+    top: 10px;
+}
+.solRaio{
+    left:84.8%;
+    top:7px;
+    max-width:10.3%;
+    animation: rotation 8s infinite linear;
+}
+
+section img.nuvem{
+    position: absolute;
+    max-width: 20%;
+    height: auto;
+}
+
+#nuvem1{
+    top:50px;
+    left:-140px;
+}
+
+#nuvem2{
+    top:700px;
+    left:-150px;
+    
+}
+
+#nuvem3{
+    top:180px;
+    left:-1000px;
+}
+
+#nuvem4{
+    top:650px;
+    left:-1300px;
+}
+#nuvem5{
+    top:450px;
+    left:-900px;
+    transform: scaleX(-1);
+}
+#nuvem6{
+    top:400px;
+    left:-220px;
+    max-width: 18%;
+    transform: scaleX(-1);
+    z-index: 10;
+    opacity: 70%;
+}
+
+#nuvem7{
+    top:700px;
+    left:700px;
+    transform: scaleX(-1);
+}
+#nuvem8{
+    top:650px;
+    left:1300px;
+    transform: scaleX(-1);
+}
+#nuvem9{
+    top:180px;
+    left:1000px;
+    transform: scaleX(-1);
 }
 
 section img#mountains_front{
@@ -116,9 +200,8 @@ section img#mountains_front{
     color:var(--white);
     white-space: nowrap;
     font-size: 5.5vw;
-    right: -100px;
     z-index: 9;
-
+    animation: bounce 4s infinite linear;
 }
 
 
@@ -128,10 +211,10 @@ font-family: "Roboto", sans-serif;
 text-decoration: none;
 font-weight: 0;
 font-size: 1.5em;
-color: #fff;
-background-color: #2b1055;
+color: #2b1055;
+background-color: #fff;
 padding: 10px 30px;
-border: solid #2b1055 2px;
+border: solid #fff 2px;
 box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 border-radius: 50px;
 transition : 1000ms;
@@ -146,9 +229,9 @@ z-index: 9;
 .btn:hover{
 transition : 1000ms;
 transform : translateY(100px);
-background-color: #fff;
-color: #2b1055;
-border: solid 2px #fff;
+background-color: #2b1055;
+color: #fff;
+border: solid 2px #2b1055;
 }
 
 .icon-moon{
@@ -188,6 +271,37 @@ border: solid 2px #fff;
 }
 
 
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
+@keyframes bounce{
+    from{
+        transform:translateY(6px)
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+    to{
+        transform:translateY(6px)
+    }
+}
 
+@keyframes bgcolor{
+    from{
+        background-color: var(--bg-day);
+    }
+    to{
+        background-color: var(--bg-night);
+    }
 
+}
+
+@keyframes hidden {
+    
+}
